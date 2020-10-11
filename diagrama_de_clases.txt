@@ -26,14 +26,14 @@ Player <|-- MakerPlayer
 Player <|-- BreakerPlayer
 Combination <|--SecretCombination
 Combination <|--ProposedCombination
-Board*--"1"SecretCombination
-Board o-- "0..10"ProposedCombination
-Board o-- "0..10" Result
+Board*-->"1"SecretCombination
+Board o--> "0..10"ProposedCombination
+Board o--> "0..10" Result
 MakerPlayer --> SecretCombination
-MakerPlayer o-- "0..10"Result
+MakerPlayer o--> "0..10"Result
 BreakerPlayer o--> "0..10"ProposedCombination
 BreakerPlayer --> Goal
-Result *-- "0..4"Succes
+Result *--> "0..4"Succes
 Result --> SecretCombination
 Result --> ProposedCombination
 Result <|-- WinnerResult
@@ -41,9 +41,9 @@ Goal<|-- WinnerResult
 Succes<|--Black
 Succes<|--White
 Succes-->Color
-Position o--"1" Color
-Combination *-- "4"Position 
-WinnerResult*--"4"Black
+Position o-->"1" Color
+Combination *--> "4"Position 
+WinnerResult*-->"4"Black
 Black -->Position
 Color<|-- Red
 Color<|--Blue
