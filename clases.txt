@@ -1,0 +1,54 @@
+@startuml
+class MasterMind
+class Player
+class Board
+class MakerPlayer
+class BreakerPlayer
+class Goal
+class Combination
+class SecretCombination
+class ProposedCombination
+class Result
+class WinnerResult
+class Black
+class White
+class Position
+class Color
+class Red
+class Blue
+class Yellow
+class Green
+class Orange
+class Purple
+MasterMind*--"1"Player
+MasterMind*--"1"Board
+Player <|-- MakerPlayer
+Player <|-- BreakerPlayer
+Combination <|--SecretCombination
+Combination <|--ProposedCombination
+Board*--"1"SecretCombination
+Board o-- "0..10"ProposedCombination
+Board o-- "0..10" Result
+MakerPlayer --> SecretCombination
+MakerPlayer o-- "0..10"Result
+BreakerPlayer o--> "0..10"ProposedCombination
+BreakerPlayer --> Goal
+Result *-- "0..4"Succes
+Result --> SecretCombination
+Result --> ProposedCombination
+Result <|-- WinnerResult
+Goal<|-- WinnerResult
+Succes<|--Black
+Succes<|--White
+Succes-->Color
+Position o--"1" Color
+Combination *-- "4"Position 
+WinnerResult*--"4"Black
+Black -->Position
+Color<|-- Red
+Color<|--Blue
+Color<|--Yellow
+Color<|-- Green
+Color<|-- Orange
+Color<|-- Purple
+@enduml
